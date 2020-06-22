@@ -8,7 +8,7 @@
         {
             "name": "Saleh",
             "email": "Saleh7@protonmail.ch"
-        },
+        }
     ],
     "require": {
         "php-curl-class/php-curl-class": "^8.0"

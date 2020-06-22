@@ -1,5 +1,5 @@
 {
-    "name": "saleh7/proxmox-ve_php_api",
+    "name": "warriorxk/proxmox-ve_php_api",
     "type": "library",
     "description": "ProxmoxVE PHP API",
     "keywords": ["Proxmox", "API", "PHP", "PVE"],
@@ -8,7 +8,7 @@
         {
             "name": "Saleh",
             "email": "Saleh7@protonmail.ch"
-        }
+        },
     ],
     "require": {
         "php-curl-class/php-curl-class": "^8.0"

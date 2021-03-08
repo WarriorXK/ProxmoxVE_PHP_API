@@ -56,8 +56,14 @@ class Request {
             'password'  => self::$password,
             'realm'     => self::$realm,
         ]);
-        if (!$response->data) {
-            throw new ProxmoxException('Response empty');
+
+        if (!isset($response->data)) {
+
+            if (self::$Client->errorCode > 0) {
+                throw new ProxmoxException('CURL error: ' . self::$Client->errorMessage . ' (Code ' . self::$Client->errorCode . ')');
+            }
+
+            throw new ProxmoxException('Response data empty');
         }
         // set header
         self::$Client->setHeader('CSRFPreventionToken', $response->data->CSRFPreventionToken);

@@ -1553,6 +1553,17 @@ class Nodes
       return Request::Request("/nodes/$node/qemu/$vmid/status/agent", $data, 'POST');
   }
   /**
+    * Pings the Qemu Guest Agent
+    * POST /api2/json/nodes/{node}/qemu/{vmid}/agent/ping
+    * @param string   $node    The cluster node name.
+    * @param integer  $vmid    The (unique) ID of the VM.
+    * @param array    $data
+  */
+  public function qemuAgentPing($node, $vmid, $data = array())
+  {
+      return Request::Request("/nodes/$node/qemu/$vmid/agent/ping", $data, 'POST');
+  }
+  /**
     * Create a copy of virtual machine/template
     * POST /api2/json/nodes/{node}/qemu/{vmid}/clone
     * @param string   $node    The cluster node name.

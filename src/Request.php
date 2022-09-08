@@ -112,7 +112,7 @@ class Request {
     /**
      * Create or verify authentication ticket.
      * POST /api2/json/access/ticket
-    */
+     */
     protected static function _Ticket($verifySSL, $verifyHost) {
 
         $client = static::_GetClient();
@@ -144,7 +144,7 @@ class Request {
      * @param string $path
      * @param array $params
      * @param string $method
-    */
+     */
     public static function Request($path, array $params = NULL, $method='GET') {
         if (substr($path, 0, 1) != '/') {
             $path = '/' . $path;
@@ -157,14 +157,14 @@ class Request {
 
                 static::AssertValidResponse($response, $api, $params);
 
-               return $response;
+                return $response;
             case 'PUT':
 
                 $response = self::$Client->put($api, $params);
 
                 static::AssertValidResponse($response, $api, $params);
 
-               return $response;
+                return $response;
             case 'POST':
 
                 $response = self::$Client->post($api, $params);
@@ -180,9 +180,9 @@ class Request {
 
                 static::AssertValidResponse($response, $api, $params);
 
-               return $response;
+                return $response;
             default:
-               throw new ProxmoxException('HTTP Request method not allowed.');
+                throw new ProxmoxException('HTTP Request method not allowed.');
         }
     }
 
@@ -190,7 +190,7 @@ class Request {
 
         $httpCode = self::$Client->getHttpStatusCode();
         if ($httpCode !== 200) {
-            throw new \RuntimeException('Got non-200 HTTP code ' . $httpCode . ' for request ' . $api);
+            throw new \RuntimeException('Got non-200 HTTP code ' . $httpCode . ' for request ' . $api, $httpCode);
         }
 
     }

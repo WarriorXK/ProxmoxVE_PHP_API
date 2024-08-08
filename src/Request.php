@@ -190,7 +190,7 @@ class Request {
 
         $httpCode = self::$Client->getHttpStatusCode();
         if ($httpCode !== 200) {
-            throw new \RuntimeException('Got non-200 HTTP code ' . $httpCode . ' for request ' . $api, $httpCode);
+            throw new \RuntimeException('Got non-200 HTTP code ' . $httpCode . ' for request ' . $api . ', response:' . PHP_EOL . self::$Client->getRawResponse(), $httpCode);
         }
 
     }

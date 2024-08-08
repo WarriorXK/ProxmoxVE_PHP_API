@@ -85,7 +85,7 @@ class Request {
      * @param string $hostname
      * @param int    $port
      */
-    public static function SetAuthentication(string $preventionToken, string $authCookie, string $hostname, int $port) : void {
+    public static function SetAuthentication(string $preventionToken, string $authCookie, string $hostname, int $port, bool $verifySSL = FALSE, bool $verifyHost = FALSE) : void {
 
         static::$_CSRFPreventionToken = $preventionToken;
         static::$_PVEAuthCookie = $authCookie;
@@ -93,9 +93,12 @@ class Request {
         static::$port = $port;
 
         $client = static::_GetClient();
-
         $client->setHeader('CSRFPreventionToken', static::$_CSRFPreventionToken);
         $client->setCookie('PVEAuthCookie', static::$_PVEAuthCookie);
+        $client->setOpts([
+            CURLOPT_SSL_VERIFYPEER => $verifySSL,
+            CURLOPT_SSL_VERIFYHOST => $verifyHost
+        ]);
 
     }
 
